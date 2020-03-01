@@ -2,6 +2,8 @@
   <dictionary name="giuseppe">
     <words>
       <w>inventario</w>
+      <w>oggetto</w>
+      <w>rimuovi</w>
     </words>
   </dictionary>
 </component>

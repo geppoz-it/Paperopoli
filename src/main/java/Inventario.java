@@ -8,8 +8,7 @@ public class Inventario {
         contenuto.add(a);
     }
 
-    public void rimuovi(Oggetto a){
-        contenuto.remove(a);
+    public void rimuovi(String nome_oggetto){
     }
 
     public String lista(){

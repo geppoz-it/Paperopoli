@@ -9,8 +9,8 @@ import org.junit.jupiter.params.provider.CsvSource;
 public class PaperopoliTests {
 
     @Test
-    @DisplayName("1 + 1 = 2")
-    void addsTwoNumbers() {
+    @DisplayName("chiave + moneta = chiave,moneta")
+    void dueOggettiInInventario() {
         Inventario inventario = new Inventario();
         Oggetto o1=new Oggetto("chiave");
         inventario.aggiungi(o1);
@@ -19,17 +19,21 @@ public class PaperopoliTests {
         assertEquals("chiave,moneta",inventario.lista(),"la lista dovrebbe visualizzare due oggetti");
     }
 
-    @ParameterizedTest(name = "{0} + {1} = {2}")
+    @ParameterizedTest(name = "{0} + {1} - {2} = {3}")
     @CsvSource({
-            "0,    1,   1",
-            "1,    2,   3",
-            "49,  51, 100",
-            "1,  100, 101"
+            "chiave,    moneta, moneta,  chiave",
+            "oggetto1,    oggetto2,   oggetto1, oggetto2",
+            "mela, pera, mela, pera"
     })
-    void add(int first, int second, int expectedResult) {
+    void rimuoviOggettoDaInventario(String primo, String secondo, String da_togliere, String risultato) {
         Inventario inventario = new Inventario();
-        assertEquals(expectedResult, inventario.add(first, second),
-                () -> first + " + " + second + " should equal " + expectedResult);
+        Oggetto o1=new Oggetto(primo);
+        inventario.aggiungi(o1);
+        Oggetto o2=new Oggetto(secondo);
+        inventario.aggiungi(o2);
+        inventario.rimuovi(da_togliere);
+        assertEquals(risultato, inventario.lista(),
+                () -> "rimuovendo "+ da_togliere + " dovrebbe essere " + risultato);
     }
 
 
