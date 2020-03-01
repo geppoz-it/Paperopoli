@@ -18,4 +18,8 @@ public class Mappa {
     public void aggiungiPassaggio(String sorgente,String destinazione){
         passaggi.get(sorgente).add(destinazione);
     }
+
+    public boolean esistePassaggio(String sorgente,String destinazione){
+        return passaggi.get(sorgente).contains(destinazione);
+    }
 }

@@ -11,12 +11,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class TestMovimenti {
 
     Personaggio p;
-    Mappa m;
 
     @BeforeAll
     void inizializza() {
-        p=new Personaggio("paperino");
-        m=new Mappa();
+        Mappa m=new Mappa();
         Luogo l1=new Luogo("cucina");
         m.aggiungiLuogo(l1);
         Luogo l2=new Luogo("soggiorno");
@@ -30,25 +28,22 @@ public class TestMovimenti {
         m.aggiungiPassaggio("soggiorno","ingresso");
         m.aggiungiPassaggio("ingresso","soggiorno");
         m.aggiungiPassaggio("ingresso","strada");
+        Paperopoli.mappa=m;
+        p=new Personaggio("paperino");
     }
 
     @ParameterizedTest(name = "da {0} a {1} = {3}")
     @CsvSource({
-            "soggiorno,    cucina, ok",
-            "cucina,    soggiorno,  ok",
-            "cucina, ingresso, ko",
-            "ingresso, strada, ok",
-            "strada, ingresso, ko"
+            "soggiorno,    cucina, true",
+            "cucina,    soggiorno,  true",
+            "cucina, ingresso, false",
+            "ingresso, strada, true",
+            "strada, ingresso, false"
     })
     void muoviPersonaggio(String sorgente, String destinazione, String risultato) {
-        Inventario inventario = new Inventario();
-        Oggetto o1=new Oggetto(primo);
-        inventario.aggiungi(o1);
-        Oggetto o2=new Oggetto(secondo);
-        inventario.aggiungi(o2);
-        inventario.rimuovi(da_togliere);
-        assertEquals(risultato, inventario.lista(),
-                () -> "rimuovendo "+ da_togliere + " la lista dovrebbe essere " + risultato);
+        p.posizione=sorgente;
+        assertEquals(Boolean.parseBoolean(risultato), p.sposta(destinazione),
+                () -> "spostando da "+ sorgente +" a "+ destinazione + " il risultato dovrebbe essere " + risultato);
     }
 
 
