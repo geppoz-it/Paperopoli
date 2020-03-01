@@ -12,7 +12,11 @@ public class PaperopoliTests {
     @DisplayName("1 + 1 = 2")
     void addsTwoNumbers() {
         Inventario inventario = new Inventario();
-        assertEquals(2, inventario.add(1, 1), "1 + 1 should equal 2");
+        Oggetto o1=new Oggetto("chiave");
+        inventario.aggiungi(o1);
+        Oggetto o2=new Oggetto("moneta");
+        inventario.aggiungi(o2);
+        assertEquals("chiave,moneta",inventario.lista(),"la lista dovrebbe visualizzare due oggetti");
     }
 
     @ParameterizedTest(name = "{0} + {1} = {2}")

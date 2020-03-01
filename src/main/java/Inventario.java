@@ -1,8 +1,18 @@
+import java.util.ArrayList;
+
 public class Inventario {
 
-    String[] lista=new String[10];
+    ArrayList<Oggetto> contenuto=new ArrayList();
 
-    int add(int a,int b){
-        return a+b;
+    public void aggiungi(Oggetto a){
+        contenuto.add(a);
+    }
+
+    public void rimuovi(Oggetto a){
+        contenuto.remove(a);
+    }
+
+    public String lista(){
+        return "da fare";
     }
 }
