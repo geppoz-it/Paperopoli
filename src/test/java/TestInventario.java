@@ -1,12 +1,12 @@
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class PaperopoliTests {
+
+public class TestInventario {
 
     @Test
     @DisplayName("chiave + moneta = chiave,moneta")
@@ -33,7 +33,7 @@ public class PaperopoliTests {
         inventario.aggiungi(o2);
         inventario.rimuovi(da_togliere);
         assertEquals(risultato, inventario.lista(),
-                () -> "rimuovendo "+ da_togliere + " dovrebbe essere " + risultato);
+                () -> "rimuovendo "+ da_togliere + " la lista dovrebbe essere " + risultato);
     }
 
 

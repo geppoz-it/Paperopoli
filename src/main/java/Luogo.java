@@ -1,7 +1,15 @@
-public class Luogo {
-    Inventario oggetti_in_questo_luogo;
+import java.util.ArrayList;
 
-    public Luogo() {
-        oggetti_in_questo_luogo=new Inventario();
+public class Luogo {
+    String nome;
+    String descrizione;
+    Inventario oggetti_presenti;
+    ArrayList<Personaggio> personaggi_presenti;
+
+    public Luogo(String nome) {
+        this.nome=nome;
+        this.descrizione=nome;
+        oggetti_presenti=new Inventario();
+        personaggi_presenti=new ArrayList<>();
     }
 }
